@@ -16,6 +16,16 @@ import java.util.List;
  * @since : 2020/06/18
  */
 
+/**
+ * 요구사항
+ * 1. 은행 입출금 내역의 총 수입과 총 지출은 각각 얼마인가? [O]
+ *   - 파일이 비어 있다면?
+ *   - 데이터에 문제가 있어서 금액을 파싱하지 못하면?
+ *   - 행의 데이터가 완벽하지 않다면?
+ * 2. 특정 달엔 몇 건의 입출금 내역이 발생했는가? []
+ * 3. 지출이 가장 높은 상위 10건은 무엇인가? []
+ * 4. 돈을 가장 많이 소비하는 항목은 무엇인가? []
+ */
 public class BankTransactionAnalyzerSimple {
     private static final String RESOURCES = "src/main/resources/";
 
