@@ -27,24 +27,21 @@ import java.util.List;
  * 3. 지출이 가장 높은 상위 10건은 무엇인가? []
  * 4. 돈을 가장 많이 소비하는 항목은 무엇인가? []
  */
-public class BankTransactionAnalyzerSimple {
+public class BankTransactionAnalyzer {
     private static final String RESOURCES = "src/main/resources/";
-    private static final BankStatementCSVParser parser = new BankStatementCSVParser();
 
-    public static void main(String[] args) throws IOException {
+    public void analyze(String filename, BankStatementParser bankStatementParser) throws IOException {
 
-        final String filename = args[0];
         final Path path = Paths.get(RESOURCES + filename);
         final List<String> lines = Files.readAllLines(path);
 
-        List<BankTransaction> bankTransactions = parser.parseLinesFromCSV(lines);
+        List<BankTransaction> bankTransactions = bankStatementParser.parseLinesFrom(lines);
         BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
         collectSummary(bankStatementProcessor);
-
     }
 
-    private static void collectSummary(final BankStatementProcessor bankStatementProcessor) {
+    private void collectSummary(final BankStatementProcessor bankStatementProcessor) {
         System.out.println("The total for all transactions is " + bankStatementProcessor.calculateTotalAmount());
         System.out.println("The total for transactions in January is " + bankStatementProcessor.calculateTotalInMonth(Month.JANUARY));
         System.out.println("The total for transactions in February is " + bankStatementProcessor.calculateTotalInMonth(Month.FEBRUARY));
