@@ -16,7 +16,13 @@ import java.util.List;
 
 public class BankStatementProcessor {
 
-    public static double calculateTotalAmount(final List<BankTransaction> bankTransactions) {
+    private final List<BankTransaction> bankTransactions;
+
+    public BankStatementProcessor(List<BankTransaction> bankTransactions) {
+        this.bankTransactions = bankTransactions;
+    }
+
+    public double calculateTotalAmount() {
         double total = 0d;
         for (BankTransaction bankTransaction : bankTransactions) {
             total += bankTransaction.getAmount();
@@ -24,14 +30,23 @@ public class BankStatementProcessor {
         return total;
     }
 
-    public static List<BankTransaction> selectInMonth(final List<BankTransaction> bankTransactions, final Month month) {
-        final List<BankTransaction> bankTransactionsInMonth = new ArrayList<>();
+    public double calculateTotalInMonth(final Month month) {
+        double total = 0d;
         for (BankTransaction bankTransaction : bankTransactions) {
             if (bankTransaction.getDate().getMonth().equals(month)) {
-                bankTransactionsInMonth.add(bankTransaction);
+                total += bankTransaction.getAmount();
             }
         }
+        return total;
+    }
 
-        return bankTransactionsInMonth;
+    public double calculateTotalForCategory(final String category) {
+        double total = 0d;
+        for (BankTransaction bankTransaction : bankTransactions) {
+            if (bankTransaction.getDescription().equals(category)) {
+                total += bankTransaction.getAmount();
+            }
+        }
+        return total;
     }
 }
