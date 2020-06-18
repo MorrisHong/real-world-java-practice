@@ -33,7 +33,7 @@ public class BankTransactionAnalyzerSimple {
     private static final String RESOURCES = "src/main/resources/";
 
     public static void main(String[] args) throws IOException {
-        final Path path = Paths.get(RESOURCES + "sample.csv");
+        final Path path = Paths.get(RESOURCES + args[0]);
         final List<String> lines = Files.readAllLines(path);
         double total = 0d;
         final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
