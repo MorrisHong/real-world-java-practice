@@ -51,30 +51,10 @@ public class BankStatementProcessor {
         return total;
     }
 
-    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
+    public List<BankTransaction> findTransactions(final BankTransactionFilter filter) {
         List<BankTransaction> result = new ArrayList<>();
         for (BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getAmount() > amount) {
-                result.add(bankTransaction);
-            }
-        }
-        return result;
-    }
-
-    public List<BankTransaction> findTransactionsInMonth(final Month month) {
-        final List<BankTransaction> result = new ArrayList<>();
-        for (BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getDate().getMonth().equals(month)) {
-                result.add(bankTransaction);
-            }
-        }
-        return result;
-    }
-
-    public List<BankTransaction> findTransactionInMonthAndGreater(final Month month, final int amount) {
-        final List<BankTransaction> result = new ArrayList<>();
-        for (BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getDate().getMonth().equals(month) && bankTransaction.getAmount() > amount) {
+            if (filter.test(bankTransaction)) {
                 result.add(bankTransaction);
             }
         }
