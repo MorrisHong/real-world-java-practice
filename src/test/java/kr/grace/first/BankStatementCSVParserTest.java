@@ -33,6 +33,12 @@ class BankStatementCSVParserTest {
         assertEquals(expected.getDate(), result.getDate());
         assertEquals(expected.getAmount(), result.getAmount());
         assertEquals(expected.getDescription(), result.getDescription());
+    }
 
+    @Test
+    void shouldFailParseLine() {
+        final String line = "30-01-2017,-50 Tesco";
+        RuntimeException runtimeException = assertThrows(RuntimeException.class, () -> parser.parseFrom(line));
+        assertTrue(runtimeException.getMessage().contains("line number : 1"));
     }
 }
