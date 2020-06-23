@@ -1,4 +1,4 @@
-package kr.grace.first.exporterImpls;
+package kr.grace.first.exporter;
 
 import kr.grace.first.SummaryStatistics;
 import kr.grace.first.interfaces.Exporter;

@@ -1,5 +1,7 @@
-package kr.grace.first;
+package kr.grace.first.parsers;
 
+import kr.grace.first.BankTransaction;
+import kr.grace.first.CSVSyntaxException;
 import kr.grace.first.interfaces.BankStatementParser;
 
 import java.time.LocalDate;
