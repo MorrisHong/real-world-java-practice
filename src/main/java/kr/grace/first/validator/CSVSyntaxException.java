@@ -1,4 +1,4 @@
-package kr.grace.first;
+package kr.grace.first.validator;
 
 /**
  * @author : Eunmo Hong
@@ -7,6 +7,6 @@ package kr.grace.first;
 
 public class CSVSyntaxException extends RuntimeException {
     public CSVSyntaxException(String message) {
-
+        super(message);
     }
 }

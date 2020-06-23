@@ -1,6 +1,9 @@
 package kr.grace.first;
 
+import kr.grace.first.validator.Notification;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
 /**
@@ -17,6 +20,19 @@ public class BankTransaction {
     private final LocalDate date;
     private final double amount;
     private final String description;
+
+    public Notification validate() {
+        final Notification notification = new Notification();
+        if (this.description.length() > 100) {
+            notification.addError("The description is too long");
+        }
+
+        if (date.isAfter(LocalDate.now())) {
+            notification.addError("date cannot be in the future");
+        }
+
+        return notification;
+    }
 
     public BankTransaction(LocalDate date, double amount, String description) {
         this.date = date;
