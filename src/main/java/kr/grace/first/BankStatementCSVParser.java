@@ -27,7 +27,7 @@ public class BankStatementCSVParser implements BankStatementParser {
         numberOfLine++;
         final String[] columns = line.split(",");
         if (columns.length != EXPECTED_ATTRIBUTES_LENGTH) {
-            throw new RuntimeException("형식에 맞지 않는 구조입니다. line number : " + numberOfLine);
+            throw new CSVSyntaxException("형식에 맞지 않는 구조입니다. line number : " + numberOfLine);
         }
 
         final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
