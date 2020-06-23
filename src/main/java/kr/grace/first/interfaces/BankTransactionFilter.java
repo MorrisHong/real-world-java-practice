@@ -1,4 +1,6 @@
-package kr.grace.first;
+package kr.grace.first.interfaces;
+
+import kr.grace.first.BankTransaction;
 
 /**
  * Created by GraceLove

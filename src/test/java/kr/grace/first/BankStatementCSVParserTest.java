@@ -1,6 +1,6 @@
 package kr.grace.first;
 
-import org.junit.jupiter.api.Assertions;
+import kr.grace.first.interfaces.BankStatementParser;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

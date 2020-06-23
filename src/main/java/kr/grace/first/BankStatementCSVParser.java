@@ -1,5 +1,7 @@
 package kr.grace.first;
 
+import kr.grace.first.interfaces.BankStatementParser;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
