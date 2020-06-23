@@ -23,32 +23,34 @@ public class BankStatementProcessor {
         this.bankTransactions = bankTransactions;
     }
 
-    public double calculateTotalAmount() {
-        double total = 0d;
+    public double summarizeTransactions(final BankTransactionSummarizer bankTransactionSummarizer) {
+        double result = 0d;
         for (BankTransaction bankTransaction : bankTransactions) {
-            total += bankTransaction.getAmount();
+            result = bankTransactionSummarizer.summarize(result, bankTransaction);
         }
-        return total;
+        return result;
+    }
+
+    public double calculateTotalAmount() {
+        return summarizeTransactions(((accumulator, bankTransaction) ->
+                bankTransaction.getAmount() + accumulator
+        ));
     }
 
     public double calculateTotalInMonth(final Month month) {
-        double total = 0d;
-        for (BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getDate().getMonth().equals(month)) {
-                total += bankTransaction.getAmount();
-            }
-        }
-        return total;
+        return summarizeTransactions(((accumulator, bankTransaction) ->
+                bankTransaction.getDate().getMonth() == month ?
+                        accumulator + bankTransaction.getAmount() :
+                        accumulator
+        ));
     }
 
     public double calculateTotalForCategory(final String category) {
-        double total = 0d;
-        for (BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getDescription().equals(category)) {
-                total += bankTransaction.getAmount();
-            }
-        }
-        return total;
+        return summarizeTransactions(((accumulator, bankTransaction) ->
+                bankTransaction.getDescription().equals(category) ?
+                        bankTransaction.getAmount() + accumulator :
+                        accumulator
+        ));
     }
 
     public List<BankTransaction> findTransactions(final BankTransactionFilter filter) {

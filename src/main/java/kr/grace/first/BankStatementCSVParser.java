@@ -19,11 +19,12 @@ public class BankStatementCSVParser implements BankStatementParser {
 
     private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     private static int numberOfLine = 0;
+    private static final int EXPECTED_ATTRIBUTES_LENGTH = 3;
     @Override
     public BankTransaction parseFrom(String line) {
         numberOfLine++;
         final String[] columns = line.split(",");
-        if (columns.length != 3) {
+        if (columns.length != EXPECTED_ATTRIBUTES_LENGTH) {
             throw new RuntimeException("형식에 맞지 않는 구조입니다. line number : " + numberOfLine);
         }
 
