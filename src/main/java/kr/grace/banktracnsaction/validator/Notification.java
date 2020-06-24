@@ -1,4 +1,4 @@
-package kr.grace.first.validator;
+package kr.grace.banktracnsaction.validator;
 
 import java.util.ArrayList;
 import java.util.List;

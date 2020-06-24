@@ -1,7 +1,7 @@
-package kr.grace.first;
+package kr.grace.banktracnsaction;
 
-import kr.grace.first.interfaces.BankStatementParser;
-import kr.grace.first.parsers.BankStatementCSVParser;
+import kr.grace.banktracnsaction.interfaces.BankStatementParser;
+import kr.grace.banktracnsaction.parsers.BankStatementCSVParser;
 
 import java.io.IOException;
 

@@ -1,7 +1,7 @@
-package kr.grace.first;
+package kr.grace.banktracnsaction;
 
-import kr.grace.first.interfaces.BankTransactionFilter;
-import kr.grace.first.interfaces.BankTransactionSummarizer;
+import kr.grace.banktracnsaction.interfaces.BankTransactionFilter;
+import kr.grace.banktracnsaction.interfaces.BankTransactionSummarizer;
 
 import java.time.Month;
 import java.util.ArrayList;

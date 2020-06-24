@@ -1,9 +1,8 @@
-package kr.grace.first;
+package kr.grace.banktracnsaction;
 
-import kr.grace.first.validator.Notification;
+import kr.grace.banktracnsaction.validator.Notification;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
 /**

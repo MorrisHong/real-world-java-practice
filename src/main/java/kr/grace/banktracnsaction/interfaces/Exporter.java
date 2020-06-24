@@ -1,6 +1,6 @@
-package kr.grace.first.interfaces;
+package kr.grace.banktracnsaction.interfaces;
 
-import kr.grace.first.SummaryStatistics;
+import kr.grace.banktracnsaction.SummaryStatistics;
 
 /**
  * @author : Eunmo Hong

@@ -1,6 +1,6 @@
-package kr.grace.first;
+package kr.grace.banktracnsaction;
 
-import kr.grace.first.interfaces.BankStatementParser;
+import kr.grace.banktracnsaction.interfaces.BankStatementParser;
 
 import java.io.IOException;
 import java.nio.file.Files;
