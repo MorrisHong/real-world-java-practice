@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import static kr.grace.documentManagement.Attributes.PATIENT;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,6 +36,16 @@ class DocumentManagementSystemTest {
         Document document = onlyDocument();
 
         assertAttributeEquals(LETTER, document, Attributes.PATH);
+    }
+
+    @Test
+    void shouldImportLetterAttributes() throws Exception {
+        system.importFile(LETTER);
+
+        final Document document = onlyDocument();
+
+        assertAttributeEquals(JOE_BLOGGS, document, PATIENT);
+
     }
 
     private void assertAttributeEquals(String expectedValue, Document document, String attributeName) {
